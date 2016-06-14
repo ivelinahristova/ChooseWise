@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'foods.apps.FoodsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,12 +77,8 @@ WSGI_APPLICATION = 'choosewise.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'choose_wise'),
-        'USER': 'user',
-        'PASSWORD': 'Parola222',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
     }
 }
 
