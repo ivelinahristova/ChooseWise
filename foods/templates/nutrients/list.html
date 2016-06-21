@@ -1,7 +1,7 @@
 {% if nutrients %}
     <ul>
     {% for nutrient in nutrients %}
-        <li><a href="/polls/{{ nutrient.id }}/">{{ nutrient.name }}</a></li>
+        <li><a href="/nutrients/{{ nutrient.id }}/">{{ nutrient.name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
