@@ -1,0 +1,43 @@
+{% if foods %}
+    <table>
+    	<thead>
+    	<tr>
+    	<th>Name</th>
+    	<th>Nutrients (grams per 100gr.)</th>
+    	<th>Alergens</th>
+    	</tr>
+    	</thead>
+    {% for food in foods %}
+        <tr>
+        <td><a href="/food/{{ food.food_id }}/">{{ food.name }}</a></td>
+        <td>
+        <table>
+            <tr>
+        {% for nutrient in food.foods_nutrients_set.all %}
+            
+            <th><a href="/nutrient/{{ nutrient.id }}/">{{ nutrient.nutrient.name }}</a></th>
+            <td>{{ nutrient.grams }}</td>
+            
+        {% endfor %}
+            </tr>
+        </table>
+        </td>
+
+        <td>
+            {% if food.alergens %}
+                <ul>
+	            {% for alergen in food.alergens.all %}
+	            <li>
+	            <a href="/nutrient/{{ nutrient.id }}/">{{ alergen.name }}</a>
+	            </li>
+	            {% endfor %}
+	            </ul>
+            {% endif %}
+        </td>
+        <td></td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No nutrients are available.</p>
+{% endif %}
