@@ -39,12 +39,10 @@ class Foods_Nutrients(models.Model):
         unique_together = (("nutrient", "food"),)
 
 class ConsumedProducts(models.Model):
-    date = models.CharField(max_length=200)
+    date = models.DateField()
     food = models.ForeignKey(Foods, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    count = models.IntegerField
-
+    count = models.IntegerField() #per 100 grams
 
     def __str__(self):
         return self.user + self.user
-

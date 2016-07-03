@@ -1,0 +1,25 @@
+{% if consumed_food %}
+    <table>
+    	<thead>
+    	<tr>
+    	<th>Name</th>
+    	<th>Nutrients (grams per 100gr.)</th>
+    	<th>Alergens</th>
+    	</tr>
+    	</thead>
+        <tr>
+        <td><a href="/food/{{ food.food_id }}/">{{ consumed_food.food.name }}</a></td>
+        <td>
+        </td>
+        <td></td>
+        </tr>
+    </table>
+{% else %}
+    <p>No nutrients are available.</p>
+{% endif %}
+
+<form action="/foods/add" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
