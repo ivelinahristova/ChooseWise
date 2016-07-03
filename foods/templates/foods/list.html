@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
 {% if foods %}
     <table>
     	<thead>
@@ -41,3 +45,5 @@
 {% else %}
     <p>No nutrients are available.</p>
 {% endif %}
+
+{% endblock %}

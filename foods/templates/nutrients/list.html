@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
 {% if nutrients %}
     <ul>
     {% for nutrient in nutrients %}
@@ -7,3 +11,6 @@
 {% else %}
     <p>No foods are available.</p>
 {% endif %}
+
+
+{% endblock %}

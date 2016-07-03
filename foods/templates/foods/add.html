@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
 {% if consumed_food %}
     <table>
     	<thead>
@@ -23,3 +26,5 @@
     {{ form }}
     <input type="submit" value="Submit" />
 </form>
+
+{% endblock %}

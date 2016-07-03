@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
 
 <a href="/foods/add">Add consumed food</a>
 
@@ -23,3 +26,6 @@
 {% else %}
     <p>No consumed foods for {{user.name}} are available.</p>
 {% endif %}
+
+
+{% endblock %}
