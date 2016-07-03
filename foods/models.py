@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Alergens(models.Model):
     name = models.CharField(max_length=200)
@@ -36,4 +37,14 @@ class Foods_Nutrients(models.Model):
 
     class Meta:
         unique_together = (("nutrient", "food"),)
+
+class ConsumedProducts(models.Model):
+    date = models.CharField(max_length=200)
+    food = models.ForeignKey(Foods, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    count = models.IntegerField
+
+
+    def __str__(self):
+        return self.user + self.user
 
