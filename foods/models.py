@@ -46,3 +46,14 @@ class ConsumedProducts(models.Model):
 
     def __str__(self):
         return self.user + self.user
+
+class Diet(models.Model):
+    nutrient = models.ForeignKey(Nutrients, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    grams = models.IntegerField() #per day
+
+    def __str__(self):
+        return self.nutrient
+
+    class Meta:
+        unique_together = (("nutrient", "user"),)

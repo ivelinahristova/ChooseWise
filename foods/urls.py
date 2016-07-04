@@ -8,4 +8,6 @@ urlpatterns = [
     url(r'consumed$', views.consumed, name='consumed'),
     url(r'list/$', views.list, name='list'),
     url(r'nutrients/$', views.nutrients, name='nutrients'),
+    url(r'diet/$', views.diet_add, name='diet_add'),
+    url(r'diet/delete/(?P<diet_id>[0-9]+)/$', views.diet_delete, name='diet_add'),
 ]

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.template import loader
 from dateutil.parser import parse
 
@@ -7,8 +8,10 @@ from .models import Foods
 from .models import Nutrients
 from .models import Foods_Nutrients
 from .models import ConsumedProducts
+from .models import Diet
 
 from .forms import ConsumedProductForm
+from .forms import DietForm
 
 def nutrients(request):
     nutrients = Nutrients.objects.all()
@@ -69,3 +72,27 @@ def list(request):
     }
     return HttpResponse(template.render(context, request))
 
+def diet_add(request):
+    user_id = request.user.id
+    diets = Diet.objects.filter(user__id = user_id)
+    form = DietForm()
+    if request.method == 'POST':
+        nutrient_id = int(request.POST.get('nutrient', False))
+        grams = int(request.POST.get('grams', False))
+        nutrient = Nutrients.objects.get(nutrient_id = nutrient_id)
+        diet = Diet(grams = grams, nutrient = nutrient, user = request.user)
+        diet.save()
+
+    template = loader.get_template('diet/add.html')
+    context = {
+        'diets': diets,
+        'form': form
+    }
+
+    return HttpResponse(template.render(context, request))
+
+def diet_delete(request, diet_id):
+    diet = Diet.objects.get(id = diet_id)
+    diet.delete()
+
+    return HttpResponseRedirect('/foods/diet/')

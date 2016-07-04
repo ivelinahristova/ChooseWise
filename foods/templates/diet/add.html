@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+<header class="add-food">
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h1 id="homeHeading">
+            <span>
+            Направи своя хранителен режим
+            </span>
+            </h1>
+        </div>
+    </div>
+</header>
+{% if diets %}
+<table class="table">
+<thead>
+    <tr>
+        <th>Хранителна съставка</th>
+        <th>Дневна доза</th>
+        <th>Действия</th>
+    </tr>
+</thead>
+{% for diet in diets %}
+<tr>
+<td>{{ diet.nutrient.name }}</td>
+<td>{{ diet.grams }}</td>
+<td><a href="/foods/diet/delete/{{diet.id}}">Изтрий</a></td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+<form action="/foods/diet/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Добави" />
+</form>
+
+{% endblock %}
