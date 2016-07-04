@@ -159,6 +159,9 @@ header {
   text-align: center;
   color: white;
 }
+header.add-food, header.consumed {
+  background-image: url('../img/add_food.jpg');
+}
 header .header-content {
   position: relative;
   text-align: center;
@@ -184,6 +187,9 @@ header .header-content .header-content-inner p {
 @media (min-width: 768px) {
   header {
     min-height: 100%;
+  }
+  header.add-food, header.consumed {
+    min-height: 200px;
   }
   header .header-content {
     position: absolute;
@@ -413,4 +419,10 @@ img::-moz-selection {
 }
 body {
   webkit-tap-highlight-color: #222222;
+}
+
+#homeHeading span {
+  background-color: #333;
+  margin-bottom: 5px;
+  display: inline-block;
 }
