@@ -19,6 +19,14 @@ def nutrients(request):
     return HttpResponse(template.render(context, request))
 
 def index(request):
+    nutrients = Nutrients.objects.all()
+    template = loader.get_template('foods/index.html')
+    context = {
+        'nutrients': nutrients
+    }
+    return HttpResponse(template.render(context, request))
+
+def consumed(request):
     consumed_foods = []
     if request.user.is_authenticated():
         user_id = request.user.id
@@ -27,7 +35,7 @@ def index(request):
         user = '11111'
 
     nutrients = Nutrients.objects.all()
-    template = loader.get_template('foods/index.html')
+    template = loader.get_template('foods/consumed.html')
     context = {
         'nutrients': nutrients,
         'consumed_foods': consumed_foods

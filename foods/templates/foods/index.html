@@ -2,30 +2,5 @@
 
 {% block body_block %}
 
-<a href="/foods/add">Add consumed food</a>
-
-{% if consumed_foods %}
-    <table>
-    	<thead>
-    	<tr>
-    	<th>Name</th>
-    	<th>Count (per 100gr)</th>
-    	<th>User</th>
-    	</tr>
-    	</thead>
-        {% for consumed_food in consumed_foods %}
-        <tr>
-        <td><a href="/food/{{ food.food_id }}/">{{ consumed_food.food.name }}</a></td>
-        <td>
-        {{ consumed_food.count }}
-        </td>
-        <td>{{consumed_food.user.username}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-{% else %}
-    <p>No consumed foods for {{user.name}} are available.</p>
-{% endif %}
-
 
 {% endblock %}

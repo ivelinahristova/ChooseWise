@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 def sign_in(request):
 
@@ -29,3 +29,6 @@ def sign_in(request):
     }
     return HttpResponse(template.render(context, request))
 
+def sign_out(request):
+    logout(request)
+    return HttpResponseRedirect('/foods/')
