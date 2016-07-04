@@ -13,15 +13,16 @@
     </div>
 </header>
 
-<a href="/foods/add">Add consumed food</a>
+<a href="/foods/add">Добави консумирана храна</a>
 
 {% if consumed_foods %}
     <table>
     	<thead>
     	<tr>
-    	<th>Name</th>
-    	<th>Count (per 100gr)</th>
-    	<th>User</th>
+    	<th>Има</th>
+    	<th>Брой (100гр./бр.)</th>
+    	<th>Потребител</th>
+        <th>Дата</th>
     	</tr>
     	</thead>
         {% for consumed_food in consumed_foods %}
@@ -31,6 +32,7 @@
         {{ consumed_food.count }}
         </td>
         <td>{{consumed_food.user.username}}</td>
+        <td>{{consumed_food.date}}</td>
         </tr>
         {% endfor %}
     </table>

@@ -46,8 +46,8 @@ def add(request):
     consumed_food = ''
     form = ConsumedProductForm()
     if request.method == 'POST':
-        food_id = 1
-        date = parse("2015-02-24T13:00:00-08:00")
+        food_id = int(request.POST['foods'])
+        date = parse(request.POST['date'])
         count = int(request.POST['count'])
         food = Foods.objects.get(food_id = food_id)
         consumed_food = ConsumedProducts(date = date, count = count, food = food, user = request.user)

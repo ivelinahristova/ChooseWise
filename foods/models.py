@@ -25,7 +25,7 @@ class Nutrients(models.Model):
 class Foods(models.Model):
     food_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
-    alergens = models.ManyToManyField(Alergens)
+    alergens = models.ManyToManyField(Alergens, null=True, blank=True)
 
     def __str__(self):
         return self.name
