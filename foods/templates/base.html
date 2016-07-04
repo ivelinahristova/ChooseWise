@@ -28,7 +28,7 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Choose Wise</a>
+                <a class="navbar-brand page-scroll" href="/foods/">Choose Wise</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,25 +42,25 @@
                 		<a href="/foods/add">+</a>
                 	</li>
                 	<li>
-            			<a class="page-scroll" href="/foods/consumed">Consumed Foods</a>
+            			<a class="page-scroll" href="/foods/consumed">Консумирани храни</a>
                 	</li>
                 	{% endif %}
                     <li>
-                        <a class="page-scroll" href="/foods/list">Foods</a>
+                        <a class="page-scroll" href="/foods/list">Храни</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/foods/nutrients">Nutrients</a>
+                        <a class="page-scroll" href="/foods/nutrients">Съставки</a>
                     </li>
                     {% if user.username %}
                     <li>
                         <a href="/user/profile">{{user.username}}</a>
                     </li>
                 	<li>
-                		<a href="/user/logout">Logout</a>
+                		<a href="/user/logout">Изход</a>
                     </li>
                     {% else %}
                     <li>
-                        <a href="/user/login">Login</a>
+                        <a href="/user/login">Вход</a>
                     </li>
                 	{% endif %}
                 </ul>
