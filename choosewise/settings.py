@@ -106,3 +106,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django_mailjet.backends.MailjetBackend'
+# MAILJET_API_KEY = 'API-KEY'
+# MAILJET_API_SECRET = 'API-SECRET'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'in-v3.mailjet.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ad24e9646c68f03235c729df849c6005'
+EMAIL_HOST_PASSWORD = '97e64b5c930529f542b710dc5adfb3bf'
