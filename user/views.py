@@ -54,7 +54,7 @@ def profile(request):
 
     nutrients = dict()
     for diet_element in diet_elements:
-        nutrients[diet_element.nutrient.nutrient_id] = [
+        nutrients[diet_element.nutrient.name] = [
         consumed_nutrients[diet_element.nutrient.nutrient_id] * 100 / diet_element.grams,
         consumed_nutrients[diet_element.nutrient.nutrient_id],
         diet_element.grams
