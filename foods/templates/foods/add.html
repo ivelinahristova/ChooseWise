@@ -12,26 +12,33 @@
         </div>
     </div>
 </header>
-{% if consumed_food %}
-    <table>
-    	<thead>
-    	<tr>
-    	<th>Name</th>
-    	<th>Nutrients (grams per 100gr.)</th>
-    	<th>Alergens</th>
-    	</tr>
-    	</thead>
+{% if consumed_foods %}
+    <table class="table">
+        <thead>
+        <tr>
+        <th>Има</th>
+        <th>Брой (100гр./бр.)</th>
+        <th>Потребител</th>
+        <th>Дата</th>
+        </tr>
+        </thead>
+        {% for consumed_food in consumed_foods %}
         <tr>
         <td><a href="/food/{{ food.food_id }}/">{{ consumed_food.food.name }}</a></td>
         <td>
+        {{ consumed_food.count }}
         </td>
-        <td></td>
+        <td>{{consumed_food.user.username}}</td>
+        <td>{{consumed_food.date}}</td>
         </tr>
+        {% endfor %}
     </table>
 {% else %}
-    <p>No nutrients are available.</p>
+    <p>{{user.name}} няма въведени консумирани храни.</p>
 {% endif %}
+<hr>
 
+<h2>Въведи консумирана храна</h2>
 <form action="/foods/add" method="post">
     {% csrf_token %}
     {{ form }}

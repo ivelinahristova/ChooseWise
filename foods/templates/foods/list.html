@@ -13,7 +13,7 @@
     </div>
 </header>
 {% if foods %}
-    <table>
+    <table class="table">
     	<thead>
     	<tr>
     	<th>Name</th>
@@ -26,14 +26,14 @@
         <td><a href="/food/{{ food.food_id }}/">{{ food.name }}</a></td>
         <td>
         <table>
-            <tr>
         {% for nutrient in food.foods_nutrients_set.all %}
+            <tr>
             
             <th><a href="/nutrient/{{ nutrient.id }}/">{{ nutrient.nutrient.name }}</a></th>
             <td>{{ nutrient.grams }}</td>
+            </tr>
             
         {% endfor %}
-            </tr>
         </table>
         </td>
 

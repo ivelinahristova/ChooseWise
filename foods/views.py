@@ -56,9 +56,16 @@ def add(request):
         consumed_food = ConsumedProducts(date = date, count = count, food = food, user = request.user)
         consumed_food.save()
 
+    consumed_foods = []
+    if request.user.is_authenticated():
+        user_id = request.user.id
+        consumed_foods = ConsumedProducts.objects.filter(user__id = user_id)
+    else:
+        user = '11111'
+
     template = loader.get_template('foods/add.html')
     context = {
-        'consumed_food': consumed_food,
+        'consumed_foods': consumed_foods,
         'form': form
     }
     return HttpResponse(template.render(context, request))
