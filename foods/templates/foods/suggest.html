@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+<header class="add-food">
+<div class="header-content">
+        <div class="header-content-inner">
+            <h1 id="homeHeading">
+            <span>
+            Choose Wise избра за вас
+            </span>
+            </h1>
+        </div>
+    </div>
+</header>
+{% if foods %}
+    <table class="table">
+    	<thead>
+    	<tr>
+    	<th>Продукт</th>
+    	<th>Количество</th>
+    	<th>За да набавите</th>
+        <th>Хр. съставка</th>
+    	</tr>
+    	</thead>
+    {% for food in foods %}
+        <tr>
+        <td><a href="/food/{{ food.food_id }}/">{{ food.food.name }}</a></td>
+        <td>
+        100гр.
+        </td>
+        <td>
+            {{ food.grams }}гр.
+        </td>
+        <td>
+            {{ food.nutrient.name }}
+        </td>
+        <td></td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>Не намерихме подходящи продукти за консумиране.</p>
+{% endif %}
+
+{% endblock %}

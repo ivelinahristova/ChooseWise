@@ -72,6 +72,38 @@ def list(request):
     }
     return HttpResponse(template.render(context, request))
 
+def suggest(request):
+
+    user_id = request.user.id
+    diet_elements = Diet.objects.filter(user__id = user_id)
+    consumed_nutrients = dict()    
+   
+    consumed_foods = ConsumedProducts.objects.filter(user__id = user_id)
+    for consumed_food in consumed_foods:
+        nutrients = Foods_Nutrients.objects.filter(food__food_id = consumed_food.id)
+        # return HttpResponse(diet_element.nutrient.nutrient_id)
+        for nutrient in nutrients:
+            if nutrient.nutrient_id in consumed_nutrients.keys():
+                consumed_nutrients[nutrient.nutrient_id] += nutrient.grams * consumed_food.count
+            else:
+                consumed_nutrients[nutrient.nutrient_id] = nutrient.grams * consumed_food.count
+
+    nutrients = dict()
+    for diet_element in diet_elements:
+        if consumed_nutrients[diet_element.nutrient.nutrient_id] < diet_element.grams:
+            nutrients[diet_element.nutrient.nutrient_id] = diet_element.grams - consumed_nutrients[diet_element.nutrient.nutrient_id]
+
+    foods = []
+    for nutrient_id, grams in nutrients.items():
+        foods.extend(Foods_Nutrients.objects.filter(nutrient__nutrient_id=nutrient_id, grams__lte = grams).select_related())
+
+    template = loader.get_template('foods/suggest.html')
+    context = {
+        'foods': foods,
+    }
+    return HttpResponse(template.render(context, request))
+
+
 def diet_add(request):
     user_id = request.user.id
     diets = Diet.objects.filter(user__id = user_id)
